@@ -32,7 +32,8 @@ void generate(char input[], int be, char output[], int i, int n){
 }
 
 int main(){
-  char input[3] = {'2','3','4'};
+  // char input[3] = "23"
+  // char input[3] = {'2','3','4'};
   char output[3];
   generate(input, 0, output, 0, 3);
 }
