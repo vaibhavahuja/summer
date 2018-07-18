@@ -190,10 +190,10 @@ Node *mergeSort(Node *head){
 }
 
 //TO DO:
-1. Add two numbers
-2. Add one to a linked list
-3. Find cycle
-4. Remove Cycle
+// 1. Add two numbers
+// 2. Add one to a linked list
+// 3. Find cycle
+// 4. Remove Cycle
 
 
 
