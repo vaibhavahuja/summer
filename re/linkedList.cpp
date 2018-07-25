@@ -189,16 +189,19 @@ Node *mergeSort(Node *head){
 }
 
 
-
-
-
+// 
+//
+// Node *add(Node *a, Node *b, int lena, int lenb){
+//   }
+//
+//
 
 
 int main(){
-  Node *head = createLL();
-  // Node *a = createLL();
-  // Node *b = createLL();
-
+  // Node *head = createLL();
+  Node *a = createLL();
+  Node *b = createLL();
+  add(a,b);
   // addtwo(a,b);
   // mergeSort(head);
   // display(mergeSort(head));
@@ -207,7 +210,7 @@ int main(){
   // findMid(head);
   // display(head);
   // display(reverse(head));
-  display(reverse2(head));
+  // display(reverse2(head));
   // Node *head2 = createLL();
   // findMid(head2);
 
