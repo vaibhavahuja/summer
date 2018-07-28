@@ -196,11 +196,30 @@ Node *mergeSort(Node *head){
 // 4. Remove Cycle
 
 
+Node *reverseK(Node *a, int k){
+  int c = 0;
+  Node *pre = NULL;
+  Node *cur = a;
+  Node *nxt = NULL;
+  while(c<k && cur){
+    nxt = cur->next;
+    cur->next = pre;
+    pre = cur;
+    cur = nxt;
+    c++;
+  }
+  if(nxt) a->next = reverseK(nxt, k);
+
+  return pre;
+}
+
+
 
 int main(){
   Node *a = create();
-  a = mergeSort(a);
-  display(a);
+  // a = mergeSort(a);
+  display(reverseK(a, 3));
+  // display(a);
   // int n;
   // cin>>n;
   // nfromLast(a,n);
