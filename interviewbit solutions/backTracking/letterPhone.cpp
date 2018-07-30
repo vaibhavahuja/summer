@@ -50,7 +50,7 @@ vs answer(string a){
 
 int main(){
   // char inp[] = "23";
-  string inp = "234";
+  string inp = "10";
   char out[100];
   // answer(inp, 0, out, 0);
   answer(inp);

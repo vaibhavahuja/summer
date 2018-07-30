@@ -55,11 +55,3 @@ int main() {
 
 
 }
-Close
-Sphere Research Labs. Ideone is powered by Sphere Engine™
-home api widget faq credits desktop mobile
-terms of service privacy policy gdpr info
-
-Feedback & Bugs
- Not using Hotjar yet?
-Select an element on the page.
