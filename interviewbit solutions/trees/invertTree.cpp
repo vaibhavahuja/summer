@@ -8,9 +8,13 @@ void invert(TreeNode *a){
   if(!a) return;
   invert(a->left);
   invert(a->right);
+
   TreeNode *temp = a->left;
   a->left = a->right;
   a->right = temp;
+
+  return a;
+
 }
 
 int main(){
