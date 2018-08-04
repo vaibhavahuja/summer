@@ -69,7 +69,7 @@ int main(){
   vc second = {')', ')', ')'};
   vc out;
   vs ans;
-  show(generate(8));
+  show(generate(3));
   // answer(first, second, 0, 0, out, ans);
   // show(ans);
 

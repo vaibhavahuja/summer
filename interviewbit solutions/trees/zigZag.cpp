@@ -61,6 +61,9 @@ vvi zigZag(TreeNode *a){
   // show2(d);
 }
 
+
+
+
 int main(){
   TreeNode *a = createTree();
   show2(zigZag(a));
