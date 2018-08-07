@@ -3,63 +3,52 @@
 #include <algorithm>
 using namespace std;
 
-
-bool isSafe(int m[][50], int row, int col, bool visited[][50], int ROW, int COL){
-  return (row>=0 && row<ROW && col>=0 && col<COL && m[row][col] && !visited[row][col]);
-}
+int rowdir[8] = {-1, -1, -1,  0, 0,  1, 1, 1};
+int coldir[8] = {-1,  0,  1, -1, 1, -1, 0, 1};
 
 
-void DFS(int m[][50], int row, int col, bool visited[][50], int n, int M){
-  int xdir[8] = {0,1,1,1,0,-1,-1,-1};
-  int ydir[8] = {1,1,0,-1,-1,-1,0,1};
 
-  visited[row][col] = true;
 
+void dfs(int mat[][1000], int r, int c, bool visited[][1000], int row, int col){
+  if(r<0 || c<0 || r>=row || c>=col || mat[r][c] == 0) return;
+  visited[r][c] = true;
   for(int i = 0; i < 8; i++){
-    if(isSafe(m, row+xdir[i], col+ydir[i], visited, n, M)){
-      DFS(m, row+xdir[i], col+ydir[i], visited, n, M);
+    if(!visited[r + rowdir[i]][c + coldir[i]]){
+      dfs(mat, r+rowdir[i], c+coldir[i], visited, row, col);
     }
   }
 }
 
-int countIslands(int m[][50], int ROW, int COL){
-  bool visited[ROW][50];
-  for(int i =0; i < ROW; i++){
-    for(int j = 0; j < COL; j++){
-      visited[i][j] = false;
-    }
-  }
+int islands(int mat[][1000], int row, int col, bool visited[][1000]){
   int count = 0;
-  for(int i =0; i < ROW; i++){
-    for(int j = 0; j < COL; j++){
-      if(!visited[i][j] && m[i][j] == 1){
-        DFS(m, i, j, visited, ROW, COL);
+  for(int i = 0; i < row; i++){
+    for(int j = 0; j < col; j++){
+      if(mat[i][j] == 1 && visited[i][j] == false){
         count++;
+        dfs(mat, i, j, visited, row, col);
       }
     }
   }
-
   return count;
-
+  // cout<<count;
 
 }
 
 
-
-
 int main(){
-  int t;
-  cin>>t;
-  int n, m;
-  cin>>n>>m;
-  int arr[n][50];
-  for(int i = 0; i < n; i++){
-    for(int j = 0; j < m; j++){
-      cin>>arr[i][j];
+  int mat[5][1000] = {{1, 1, 0, 0, 0},
+                   {0, 1, 0, 0, 1},
+                   {1, 0, 1, 1, 1},
+                   {0, 0, 0, 1, 0},
+                   {1, 1, 0, 1, 1}};
+  bool visited[5][1000];
+
+  for(int i = 0; i < 5; i++){
+    for(int j = 0; j < 5; j++){
+      visited[i][j] = false;
     }
   }
 
-  cout<<countIslands(arr, n, m)<<endl;
-
+  cout<<islands(mat, 5, 5, visited)<<endl;
 
 }

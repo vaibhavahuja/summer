@@ -12,6 +12,7 @@ int knapsack(vi val, int be, vi wt, int w){
 
 
 
+
 //dp solution for the same
 
 int sack(vi val, vi wt, int w){
@@ -53,8 +54,10 @@ int main(){
       wt.push_back(qwe);
     }
     cout<<sack(val, wt, W)<<endl;
+    // cout<<knapsack(val, val.size(), wt, W);
+    //
+
 
   }
 
-  // cout<<knapsack(val, val.size(), wt, W);
 }

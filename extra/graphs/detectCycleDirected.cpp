@@ -49,47 +49,59 @@ public:
     }
   }
 
-  //check for cycle in a  graph
+//check for cycle in a  graph
+  bool isCycle(int src, vb &visited, vb &recStack){
+    if(!visited[src]){
+      visited[src] = true;
+      recStack[src] = true;
+
+      for(int i = 0; i < g[src].size(); i++){
+        if(!visited[g[src][i]] && isCycle(g[src][i], visited, recStack)) return true;
+        else if(recStack[g[src][i]]) return true;
+      }
+    }
+
+    recStack[src] = false;
+    return false;
+  }
 
 
+  bool isCyclic(){
+    vb visited(g.size(), false);
+    vb recStack(g.size(), false);
+
+    for(int i = 0; i < g.size(); i++){
+      if(isCycle(i, visited, recStack)) return true;
+    }
+    return false;
+  }
 
 
 };
 
+
+
+
+
+
+
+
+
 int main(){
 
-  // Graph g(36);
-  // g.addEdge(1,2);
-  // g.addEdge(1,3);
-  // g.addEdge(2,4);
-  // g.addEdge(2,1);
-  // g.addEdge(2,5);
-  // g.addEdge(3,5);
-  // g.addEdge(3,1);
-  // g.addEdge(5,3);
-  // g.addEdge(5,2);
-  // g.addEdge(5,6);
-  // g.addEdge(4,2);
-  // g.addEdge(4,5);
-  // g.addEdge(4,6);
-  // g.addEdge(6,4);
-  // g.addEdge(6,5);
+  Graph g(4);
+  g.addEdge(0, 1);
+  g.addEdge(0, 2);
+  g.addEdge(1, 2);
+  g.addEdge(3,2);
+  // g.addEdge(2, 3);
+  // g.addEdge(3,3);
 
-  Graph g(5); // Total 5 vertices in graph
-   g.addEdge(1, 0);
-   g.addEdge(0, 2);
-   g.addEdge(2, 1);
-   g.addEdge(0, 3);
-   g.addEdge(1, 4);
+  // vb visited(4, false);
+  // vb recStack(4, false);
 
-   // cout << "Following is Depth First Traversal\n";
-   vb visited(36, false);
-   si s;
-   g.iter_dfs(0, s, visited);
-  //
-  // g.iter_dfs(1, s, visited);
-  cout<<endl;
-  vb visit(36, false);
-  g.dfs(0, visit);
+
+  if(g.isCyclic()) cout << "Graph contains cycle";
+  else cout << "Graph doesn't contain cycle";
 
 }
